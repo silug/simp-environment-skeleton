@@ -1,6 +1,6 @@
 Summary: The SIMP Environment Skeleton
 Name: simp-environment-skeleton
-Version: 7.3.1
+Version: 7.4.0
 Release: 1%{?dist}
 # The entire source code is Apache License 2.0 except the following, which are
 # OpenSSL:
@@ -85,6 +85,11 @@ cp -r environments/* %{buildroot}/%{prefix}
 %attr(0755,-,-) %{prefix}/secondary/FakeCA/usergen_nopass.sh
 
 %changelog
+* Mon Nov 16 2026 hcaballero2 <hcaballero02@gmail.com> - 7.4.0-1
+- Replace `simp_options::haveged` with `pupmod::rngd` and the `rngd` service
+  settings in the `simp` and `simp_lite` scenarios and the puppet server host
+  data, and remove it from the `remote_access` scenario
+
 * Tue Oct 05 2021 Trevor Vaughan <tvaughan@onyxpoint.com> - 7.3.1-1
 - Fix EL8 RPM dependencies
 

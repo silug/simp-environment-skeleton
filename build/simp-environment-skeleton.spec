@@ -85,7 +85,7 @@ cp -r environments/* %{buildroot}/%{prefix}
 %attr(0755,-,-) %{prefix}/secondary/FakeCA/usergen_nopass.sh
 
 %changelog
-* Fri Nov 13 2026 Steven Pritchard <steve@sicura.us> - 8.0.0-1
+* Mon Nov 16 2026 Steven Pritchard <steve@sicura.us> - 8.0.0-1
 - Add a Compliance Engine level (`compliance_engine::enforcement`) at the
   bottom of `hiera.yaml`; it requires the simp/compliance_engine module
 - The `simp`, `simp_lite` and `poss` scenarios enforce the `simp:defaults`
@@ -99,6 +99,11 @@ cp -r environments/* %{buildroot}/%{prefix}
   `domain` facts, so per-host and per-domain data never matched
 - Drop the deprecated `iptables::use_firewalld` setting; firewalld is the
   `iptables` module's default backend
+
+* Mon Nov 16 2026 hcaballero2 <hcaballero02@gmail.com> - 7.4.0-1
+- Replace `simp_options::haveged` with `pupmod::rngd` and the `rngd` service
+  settings in the `simp` and `simp_lite` scenarios and the puppet server host
+  data, and remove it from the `remote_access` scenario
 
 * Tue Oct 05 2021 Trevor Vaughan <tvaughan@onyxpoint.com> - 7.3.1-1
 - Fix EL8 RPM dependencies

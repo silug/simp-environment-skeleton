@@ -20,7 +20,6 @@ pupmod::enable_puppet_master: true
 ### Secure SIMP Options ###
 simp_options::auditd: true
 simp_options::firewall: true
-iptables::use_firewalld: true
 pupmod::rngd: true
 rngd::service_ensure: running
 rngd::service_enable: true

@@ -1,6 +1,6 @@
 Summary: The SIMP Environment Skeleton
 Name: simp-environment-skeleton
-Version: 7.4.0
+Version: 8.0.0
 Release: 1%{?dist}
 # The entire source code is Apache License 2.0 except the following, which are
 # OpenSSL:
@@ -85,6 +85,21 @@ cp -r environments/* %{buildroot}/%{prefix}
 %attr(0755,-,-) %{prefix}/secondary/FakeCA/usergen_nopass.sh
 
 %changelog
+* Mon Nov 16 2026 Steven Pritchard <steve@sicura.us> - 8.0.0-1
+- Add a Compliance Engine level (`compliance_engine::enforcement`) at the
+  bottom of `hiera.yaml`; it requires the simp/compliance_engine module
+- The `simp`, `simp_lite` and `poss` scenarios enforce the `simp:defaults`
+  profile, which restores the SIMP behavior that modules no longer apply by
+  default
+- The `simp_lite` scenario turns off the ssh and libreswan firewall
+  integrations, which `simp:defaults` sets directly instead of following
+  `simp_options::firewall`
+- Use the structured `networking` facts in `hiera.yaml` and the `site.pp`
+  example; OpenVox 8+ agents don't send the legacy `fqdn`, `hostname` and
+  `domain` facts, so per-host and per-domain data never matched
+- Drop the deprecated `iptables::use_firewalld` setting; firewalld is the
+  `iptables` module's default backend
+
 * Mon Nov 16 2026 hcaballero2 <hcaballero02@gmail.com> - 7.4.0-1
 - Replace `simp_options::haveged` with `pupmod::rngd` and the `rngd` service
   settings in the `simp` and `simp_lite` scenarios and the puppet server host
